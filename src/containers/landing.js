@@ -1,49 +1,45 @@
-import React, { PropTypes } from 'react'
-import { Button, StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import { Button, Text, View } from 'react-native'
+import { Link } from 'react-router-native'
+import styled from 'styled-components/native'
+
+const StyledView = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: #14568F;
+`
+
+const StyledText = styled.Text`
+  font-size: 20;
+  text-align: center;
+  margin: 20;
+`
+
+const LinkText = styled.Text`
+  font-size: 20;
+  text-align: center;
+  color: #77bc43;
+`
 
 class Landing extends React.Component {
-
-  onPress = () => {}
-
   render() {
     return (
-      <View style={styles.container}>
+      <StyledView>
 
-        <Text style={styles.text}>
+        <StyledText>
           Welcome to the Meshblu Augmented Reality Remote!
           Point your phone's camera at a device you have added
           to Meshblu and control it remotely...
-        </Text>
+        </StyledText>
 
-        <View style={styles.button}>
-          <Button
-            title='Get Started'
-            onPress={this.onPress}
-            color='#77bc43'
-            />
-        </View>
+        <Link to='/camera'>
+          <LinkText>Get Started</LinkText>
+        </Link>
 
-      </View>
+      </StyledView>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#14568F',
-  },
-  text: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 20,
-    color: '#77bc43',
-  },
-  button: {
-    backgroundColor: '#333333',
-  }
-})
 
 export default Landing

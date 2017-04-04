@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { AppRegistry } from 'react-native'
 
-import Landing from './src/containers/landing.js'
+import Router from './src/index.js'
 
 export default class MeshbluARRemote extends Component {
   render() {
     return (
-      <Landing />
+      <Router />
     )
   }
 }
