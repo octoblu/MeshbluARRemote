@@ -14,6 +14,7 @@ const StyledText = styled.Text`
   font-size: 20;
   text-align: center;
   margin: 20;
+  color: #fff;
 `
 
 const LinkText = styled.Text`
