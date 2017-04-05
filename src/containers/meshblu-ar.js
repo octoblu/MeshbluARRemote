@@ -1,6 +1,11 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import Camera from 'react-native-camera'
+import { Accelerometer } from 'react-native-sensors'
+
+const accelUpdate = new Accelerometer({
+  updateInterval: 500,
+})
 
 class MeshbluAR extends React.Component {
   render() {
