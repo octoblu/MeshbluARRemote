@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native'
 import Camera from 'react-native-camera'
 import { Accelerometer } from 'react-native-sensors'
 
-const accelUpdate = new Accelerometer()
+const accelUpdate = new Accelerometer({ updateInterval: 500 })
 var accelHistory = []
 
 class MeshbluAR extends React.Component {
