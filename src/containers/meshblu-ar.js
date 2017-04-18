@@ -1,21 +1,17 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import Camera from 'react-native-camera'
-import { Accelerometer } from 'react-native-sensors'
+import { Gyroscope } from 'react-native-sensors'
 
-const accelUpdate = new Accelerometer({ updateInterval: 500 })
-var accelHistory = []
+const gyroUpdate = new Gyroscope({ updateInterval: 500 })
 
 class MeshbluAR extends React.Component {
   render() {
-    accelUpdate.subscribe(accel => {
-      if (accelHistory.length < 10) {
-        accelHistory.unshift({x: accel.x, y: accel.y, z: accel.z})
-      } else {
-        accelHistory.pop()
-        accelHistory.unshift({x: accel.x, y: accel.y, z: accel.z})
+    gyroUpdate.subscribe(gyro => {
+      var totalMovement = Math.abs(gyro.x) + Math.abs(gyro.y) + Math.abs(gyro.z)
+      if(totalMovement < 0.075) {
+        console.log("Phone has stopped moving, time to take a pic")
       }
-      console.log(accelHistory)
     })
 
     return (
