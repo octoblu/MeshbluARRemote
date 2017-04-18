@@ -4,13 +4,17 @@ import Camera from 'react-native-camera'
 import { Gyroscope } from 'react-native-sensors'
 
 const gyroUpdate = new Gyroscope({ updateInterval: 500 })
+var picTaken = false
 
 class MeshbluAR extends React.Component {
   render() {
     gyroUpdate.subscribe(gyro => {
       var totalMovement = Math.abs(gyro.x) + Math.abs(gyro.y) + Math.abs(gyro.z)
-      if(totalMovement < 0.075) {
-        console.log("Phone has stopped moving, time to take a pic")
+      if (totalMovement < 0.075 && !picTaken) {
+        picTaken = true
+        this.camera.capture()
+         .then(data => console.log(data))
+         .catch(err => console.error(err))
       }
     })
 
