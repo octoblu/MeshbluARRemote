@@ -13,8 +13,8 @@ class MeshbluAR extends React.Component {
       if (totalMovement < 0.075 && !picTaken) {
         picTaken = true
         this.camera.capture()
-         .then(data => console.log(data))
-         .catch(err => console.error(err))
+          .then(data => console.log(data))
+          .catch(err => console.error(err))
       }
     })
 
