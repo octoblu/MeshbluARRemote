@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import Camera from 'react-native-camera'
+import RNFetchBlob from 'react-native-fetch-blob'
 import { Gyroscope } from 'react-native-sensors'
 
 const gyroUpdate = new Gyroscope({ updateInterval: 500 })
@@ -13,7 +14,14 @@ class MeshbluAR extends React.Component {
       if (totalMovement < 0.075 && !picTaken) {
         picTaken = true
         this.camera.capture()
-          .then(data => console.log(data))
+          .then(data => {
+            RNFetchBlob.fs.readFile(data.path, 'base64')
+              .then((image) => {
+                fetch('https://drewatson-ydlseyklpi.now.sh/recognition', { method: 'POST', data: { image: image } })
+                  .then(response => console.log(response))
+                  .catch(error => console.error(error))
+              })
+          })
           .catch(err => console.error(err))
       }
     })
