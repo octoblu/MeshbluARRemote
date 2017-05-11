@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import { Link } from 'react-router-native'
 import styled from 'styled-components/native'
 
