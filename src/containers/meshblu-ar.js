@@ -17,8 +17,18 @@ class MeshbluAR extends React.Component {
           .then(data => {
             RNFetchBlob.fs.readFile(data.path, 'base64')
               .then((image) => {
-                fetch('https://drewatson-ydlseyklpi.now.sh/recognition', { method: 'POST', data: { image: image } })
-                  .then(response => console.log(response))
+                var options = {
+                  method: 'POST',
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    image: image
+                  })
+                }
+                fetch('http://34.204.40.255/recognition', options)
+                  .then(response => console.log(response.json()))
                   .catch(error => console.error(error))
               })
           })
