@@ -43,6 +43,7 @@ class MeshbluAR extends React.Component {
       <View style={styles.container}>
         <Camera
           ref={(cam) => { this.camera = cam }}
+          captureTarget={Camera.constants.CaptureTarget.temp}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
         </Camera>
