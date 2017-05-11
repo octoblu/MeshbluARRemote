@@ -8,6 +8,10 @@ const gyroUpdate = new Gyroscope({ updateInterval: 500 })
 var picTaken = false
 
 class MeshbluAR extends React.Component {
+  state = {
+    device: null
+  }
+
   render() {
     gyroUpdate.subscribe(gyro => {
       var totalMovement = Math.abs(gyro.x) + Math.abs(gyro.y) + Math.abs(gyro.z)
@@ -23,12 +27,11 @@ class MeshbluAR extends React.Component {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                   },
-                  body: JSON.stringify({
-                    image: image
-                  })
+                  body: JSON.stringify({ image: image })
                 }
                 fetch('http://34.204.40.255/recognition', options)
-                  .then(response => console.log(response.json()))
+                  .then(response => response.json())
+                  .then(responseJson => this.setState({ device: responseJson }))
                   .catch(error => console.error(error))
               })
           })
