@@ -1,3 +1,4 @@
+import { withNavigation } from '@expo/ex-navigation';
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import Camera from 'react-native-camera'
@@ -7,6 +8,7 @@ import { Gyroscope } from 'react-native-sensors'
 const gyroUpdate = new Gyroscope({ updateInterval: 500 })
 var picTaken = false
 
+@withNavigation
 class MeshbluAR extends React.Component {
   state = {
     device: null
@@ -31,7 +33,10 @@ class MeshbluAR extends React.Component {
                 }
                 fetch('http://34.204.40.255/recognition', options)
                   .then(response => response.json())
-                  .then(responseJson => this.setState({ device: responseJson }))
+                  .then(responseJson => {
+                    this.setState({ device: responseJson })
+                    this.props.navigator.push('control', { device: this.state.device })
+                  })
                   .catch(error => console.error(error))
               })
           })

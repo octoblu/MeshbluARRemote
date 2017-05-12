@@ -1,6 +1,6 @@
+import { withNavigation } from '@expo/ex-navigation';
 import React from 'react'
-import { Text, View } from 'react-native'
-import { Link } from 'react-router-native'
+import { Button, Text, View } from 'react-native'
 import styled from 'styled-components/native'
 
 const StyledView = styled.View`
@@ -17,13 +17,12 @@ const StyledText = styled.Text`
   color: #fff;
 `
 
-const LinkText = styled.Text`
-  font-size: 20;
-  text-align: center;
-  color: #77bc43;
-`
-
+@withNavigation
 class Landing extends React.Component {
+  nextPage = () => {
+    this.props.navigator.push('camera')
+  }
+
   render() {
     return (
       <StyledView>
@@ -34,9 +33,7 @@ class Landing extends React.Component {
           to Meshblu and control it remotely...
         </StyledText>
 
-        <Link to='/camera'>
-          <LinkText>Get Started</LinkText>
-        </Link>
+        <Button title='Get Started' onPress={this.nextPage}/>
 
       </StyledView>
     )

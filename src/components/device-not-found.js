@@ -1,6 +1,7 @@
+import { withNavigation } from '@expo/ex-navigation';
+import PropTypes from 'prop-types'
 import React from 'react'
-import { Text, View } from 'react-native'
-import { Link } from 'react-router-native'
+import { Button, Text, View } from 'react-native'
 import styled from 'styled-components/native'
 
 const StyledView = styled.View`
@@ -13,34 +14,38 @@ const StyledView = styled.View`
 const StyledText = styled.Text`
   font-size: 20;
   text-align: center;
-  margin: 20;
+  margin: 0 20 10 20;
   color: #fff;
 `
 
-const LinkText = styled.Text`
-  font-size: 20;
-  text-align: center;
-  color: #77bc43;
-`
+const propTypes = {
+  device: PropTypes.object.isRequired
+}
 
-class Landing extends React.Component {
+@withNavigation
+class DeviceNotFound extends React.Component {
+  goBack = () => {
+    this.props.navigator.push('camera')
+  }
+
   render() {
-    var data = this.props.data;
-    console.log(data)
     return (
       <StyledView>
 
         <StyledText>
-          A valid Meshblu Device was not detected....
+          Invalid Meshblu device detected:
+        </StyledText>
+        <StyledText>
+          '{this.props.device.class}'
         </StyledText>
 
-        <Link to='/camera'>
-          <LinkText>Try Again</LinkText>
-        </Link>
+        <Button title='Try Again' onPress={this.goBack}/>
 
       </StyledView>
     )
   }
 }
 
-export default Landing
+DeviceNotFound.propTypes = propTypes
+
+export default DeviceNotFound
