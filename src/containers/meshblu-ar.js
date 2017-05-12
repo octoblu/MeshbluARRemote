@@ -6,12 +6,13 @@ import RNFetchBlob from 'react-native-fetch-blob'
 import { Gyroscope } from 'react-native-sensors'
 
 const gyroUpdate = new Gyroscope({ updateInterval: 500 })
-var picTaken = false
+var picTaken
 
 @withNavigation
 class MeshbluAR extends React.Component {
-  state = {
-    device: null
+  constructor(props) {
+    super(props)
+    picTaken = false
   }
 
   render() {
@@ -33,10 +34,7 @@ class MeshbluAR extends React.Component {
                 }
                 fetch('http://34.204.40.255/recognition', options)
                   .then(response => response.json())
-                  .then(responseJson => {
-                    this.setState({ device: responseJson })
-                    this.props.navigator.push('control', { device: this.state.device })
-                  })
+                  .then(responseJson => this.props.navigator.push('control', { device: responseJson }))
                   .catch(error => console.error(error))
               })
           })
