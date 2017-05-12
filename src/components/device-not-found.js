@@ -43,7 +43,7 @@ class DeviceNotFound extends React.Component {
           Invalid Meshblu device detected:
         </StyledText>
         <StyledText2>
-          '{this.props.device.class}'
+          '{this.props.device.class}' ({(this.props.device.score*100).toFixed(2)}%)
         </StyledText2>
 
         <Button title='Try Again' onPress={this.goBack}/>
