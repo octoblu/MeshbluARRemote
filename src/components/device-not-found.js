@@ -18,6 +18,13 @@ const StyledText = styled.Text`
   color: #fff;
 `
 
+const StyledText2 = styled.Text`
+  font-size: 20;
+  text-align: center;
+  margin: 0 20 20 20;
+  color: #fff;
+`
+
 const propTypes = {
   device: PropTypes.object.isRequired
 }
@@ -35,9 +42,9 @@ class DeviceNotFound extends React.Component {
         <StyledText>
           Invalid Meshblu device detected:
         </StyledText>
-        <StyledText>
+        <StyledText2>
           '{this.props.device.class}'
-        </StyledText>
+        </StyledText2>
 
         <Button title='Try Again' onPress={this.goBack}/>
 
