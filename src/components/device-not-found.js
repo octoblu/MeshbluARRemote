@@ -1,4 +1,4 @@
-import { withNavigation } from '@expo/ex-navigation';
+import { withNavigation } from '@expo/ex-navigation'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Button, Text, View } from 'react-native'
