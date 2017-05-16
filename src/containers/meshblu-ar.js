@@ -5,11 +5,17 @@ import Camera from 'react-native-camera'
 import RNFetchBlob from 'react-native-fetch-blob'
 import { Gyroscope } from 'react-native-sensors'
 
+import Loading from '../components/loading.js'
+
 const gyroUpdate = new Gyroscope({ updateInterval: 500 })
 var picTaken
 
 @withNavigation
 class MeshbluAR extends React.Component {
+  state = {
+    loading: false
+  }
+
   constructor(props) {
     super(props)
     picTaken = false
@@ -22,6 +28,7 @@ class MeshbluAR extends React.Component {
         picTaken = true
         this.camera.capture()
           .then(data => {
+            this.setState({ loading: true })
             RNFetchBlob.fs.readFile(data.path, 'base64')
               .then((image) => {
                 var options = {
@@ -42,14 +49,17 @@ class MeshbluAR extends React.Component {
       }
     })
 
+    var display = (<Camera
+                    ref={(cam) => { this.camera = cam }}
+                    captureTarget={Camera.constants.CaptureTarget.temp}
+                    style={styles.preview}
+                    aspect={Camera.constants.Aspect.fill} />)
+
+    if (this.state.loading) display = <Loading />
+
     return (
       <View style={styles.container}>
-        <Camera
-          ref={(cam) => { this.camera = cam }}
-          captureTarget={Camera.constants.CaptureTarget.temp}
-          style={styles.preview}
-          aspect={Camera.constants.Aspect.fill}>
-        </Camera>
+        {display}
       </View>
     )
   }
