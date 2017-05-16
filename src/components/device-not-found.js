@@ -46,7 +46,7 @@ class DeviceNotFound extends React.Component {
           '{this.props.device.class}' ({(this.props.device.score*100).toFixed(2)}%)
         </StyledText2>
 
-        <Button title='Try Again' onPress={this.goBack}/>
+        <Button title='Back to Camera' onPress={this.goBack}/>
 
       </StyledView>
     )
