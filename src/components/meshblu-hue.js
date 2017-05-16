@@ -10,7 +10,6 @@ import HueListItem from './hue-list-item.js'
 const StyledView = styled.View`
   flex: 1;
   justify-content: center;
-  align-items: center;
   background-color: #14568F;
 `
 
@@ -26,6 +25,10 @@ const StyledText2 = styled.Text`
   text-align: center;
   margin: 0 20 20 20;
   color: #fff;
+`
+
+const Margin = styled.View`
+  margin: 0 50 0 50;
 `
 
 const propTypes = {
@@ -80,7 +83,9 @@ class MeshbluHue extends React.Component {
 
         {deviceList}
 
-        <Button title='Back To Camera' onPress={this.goBack}/>
+        <Margin>
+          <Button title='Back To Camera' onPress={this.goBack}/>
+        </Margin>
 
       </StyledView>
     )

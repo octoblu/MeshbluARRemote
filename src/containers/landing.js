@@ -6,7 +6,6 @@ import styled from 'styled-components/native'
 const StyledView = styled.View`
   flex: 1;
   justify-content: center;
-  align-items: center;
   background-color: #14568F;
 `
 
@@ -15,6 +14,10 @@ const StyledText = styled.Text`
   text-align: center;
   margin: 20;
   color: #fff;
+`
+
+const Margin = styled.View`
+  margin: 0 50 0 50;
 `
 
 @withNavigation
@@ -33,7 +36,9 @@ class Landing extends React.Component {
           to Meshblu and control it remotely...
         </StyledText>
 
-        <Button title='Get Started' onPress={this.nextPage}/>
+        <Margin>
+          <Button title='Get Started' onPress={this.nextPage}/>
+        </Margin>
 
       </StyledView>
     )

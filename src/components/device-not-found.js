@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 const StyledView = styled.View`
   flex: 1;
   justify-content: center;
-  align-items: center;
   background-color: #14568F;
 `
 
@@ -23,6 +22,10 @@ const StyledText2 = styled.Text`
   text-align: center;
   margin: 0 20 20 20;
   color: #fff;
+`
+
+const Margin = styled.View`
+  margin: 0 50 0 50;
 `
 
 const propTypes = {
@@ -46,7 +49,9 @@ class DeviceNotFound extends React.Component {
           '{this.props.device.class}' ({(this.props.device.score*100).toFixed(2)}%)
         </StyledText2>
 
-        <Button title='Back to Camera' onPress={this.goBack}/>
+        <Margin>
+          <Button title='Back to Camera' onPress={this.goBack}/>
+        </Margin>
 
       </StyledView>
     )

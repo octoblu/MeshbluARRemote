@@ -1,6 +1,14 @@
 import React from 'react'
 import { Button, View, Text } from 'react-native'
 import styled from 'styled-components/native'
+import t from 'tcomb-form-native'
+
+var Form = t.form.Form
+var options = {}
+var Light = t.struct({
+  color: t.String,
+  power: t.Boolean
+})
 
 const StyledView = styled.View`
   flex: 1;
@@ -10,11 +18,7 @@ const StyledView = styled.View`
 const CenterView = styled.View`
   flex: 1;
   justify-content: center;
-  align-items: center;
-`
-
-const Margin = styled.View`
-  margin: 0 20 10 20;
+  margin: 0 50 0 50;
 `
 
 const StyledText = styled.Text`
@@ -24,7 +28,29 @@ const StyledText = styled.Text`
   color: #fff;
 `
 
+const Margin = styled.View`
+  margin-top: 10;
+`
+
 class Hue extends React.Component {
+  state = {
+    value: null
+  }
+
+  onChange = (value) => {
+    this.setState({ value })
+  }
+
+  clearForm = () => {
+    this.setState({ value: null })
+  }
+
+  sendMessage = () => {
+    var value = this.refs.form.getValue();
+    if (value) {
+      this.clearForm();
+    }
+  }
 
   goBack = () => {
     this.props.navigator.pop()
@@ -37,10 +63,22 @@ class Hue extends React.Component {
   render() {
     return (
       <StyledView>
+
         <StyledText>
           Controlling {this.props.route.params.name} ({this.props.route.params.uuid})
         </StyledText>
+
         <CenterView>
+          <Form
+            ref="form"
+            type={Light}
+            value={this.state.value}
+            onChange={this.onChange.bind(this)}
+          />
+
+          <Margin>
+            <Button title='Send Message' onPress={this.sendMessage}/>
+          </Margin>
           <Margin>
             <Button title='Back to List' onPress={this.goBack}/>
           </Margin>
@@ -48,6 +86,7 @@ class Hue extends React.Component {
             <Button title='Back To Camera' onPress={this.toCamera}/>
           </Margin>
         </CenterView>
+
       </StyledView>
     )
   }
