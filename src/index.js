@@ -4,6 +4,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import Control from './containers/control.js'
+import Hue from './containers/hue.js'
 import Landing from './containers/landing.js'
 import MeshbluAR from './containers/meshblu-ar.js'
 
@@ -15,7 +16,8 @@ const Container = styled.View`
 const Router = createRouter(() => ({
   home: () => Landing,
   camera: () => MeshbluAR,
-  control: () => Control
+  control: () => Control,
+  hue: () => Hue
 }))
 
 class App extends React.Component {

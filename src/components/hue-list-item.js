@@ -15,14 +15,14 @@ const propTypes = {
 
 @withNavigation
 class HueListItem extends React.Component {
-  goBack = () => {
-    this.props.navigator.push('camera')
+  controlHue = () => {
+    this.props.navigator.push('hue', { name: this.props.name, uuid: this.props.uuid })
   }
 
   render() {
     return (
       <StyledView>
-        <Button title={this.props.name + " (" + this.props.uuid + ")"} onPress={this.goBack}/>
+        <Button title={this.props.name + " (" + this.props.uuid + ")"} onPress={this.controlHue}/>
       </StyledView>
     )
   }
