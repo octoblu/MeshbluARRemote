@@ -7,6 +7,8 @@ import styled from 'styled-components/native'
 
 import HueListItem from './hue-list-item.js'
 
+import userCreds from '../../meshblu-user.json'
+
 const StyledView = styled.View`
   flex: 1;
   justify-content: center;
@@ -50,8 +52,8 @@ class MeshbluHue extends React.Component {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'X-MESHBLU-UUID': '999ad5a1-74c8-11e4-96f2-b7ea45e5c402',
-        'X-MESHBLU-TOKEN': '6e9eae2d7d84cdbcf37d767bac1975cce6443763'
+        'X-MESHBLU-UUID': userCreds.uuid,
+        'X-MESHBLU-TOKEN': userCreds.token
       }
     }
     fetch('https://meshblu.octoblu.com/search/devices', options)

@@ -3,6 +3,8 @@ import { Button, View, Text } from 'react-native'
 import styled from 'styled-components/native'
 import t from 'tcomb-form-native'
 
+import userCreds from '../../meshblu-user.json'
+
 var Form = t.form.Form
 var options = {}
 var Light = t.struct({
@@ -54,8 +56,8 @@ class Hue extends React.Component {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'X-MESHBLU-UUID': '999ad5a1-74c8-11e4-96f2-b7ea45e5c402',
-          'X-MESHBLU-TOKEN': '6e9eae2d7d84cdbcf37d767bac1975cce6443763'
+          'X-MESHBLU-UUID': userCreds.uuid,
+          'X-MESHBLU-TOKEN': userCreds.token
         },
         body: JSON.stringify({ "$set": { "desiredState": { "on": value.power, "color": value.color }}})
       }
