@@ -6,7 +6,7 @@ import t from 'tcomb-form-native'
 var Form = t.form.Form
 var options = {}
 var LoginForm = t.struct({
-  username: t.String,
+  email: t.String,
   password: t.String
 })
 
@@ -24,7 +24,7 @@ const CenterView = styled.View`
 const StyledText = styled.Text`
   font-size: 20;
   text-align: center;
-  margin: 20;
+  margin: 20 0 40 0;
   color: #fff;
 `
 
@@ -54,12 +54,11 @@ class Login extends React.Component {
   render() {
     return (
       <StyledView>
-
-        <StyledText>
-          Login to your Octoblu account...
-        </StyledText>
-
         <CenterView>
+          <StyledText>
+            Please login to Octoblu...
+          </StyledText>
+
           <Form
             ref="form"
             type={LoginForm}
@@ -68,10 +67,9 @@ class Login extends React.Component {
           />
 
           <Margin>
-            <Button title='Login' onPress={this.attemptLogin}/>
+            <Button title='Sign in' onPress={this.attemptLogin}/>
           </Margin>
         </CenterView>
-
       </StyledView>
     )
   }
