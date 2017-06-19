@@ -11,8 +11,8 @@ const StyledView = styled.View`
 
 class Control extends React.Component {
   render() {
-    var device = <DeviceNotFound device={this.props.route.params.device}/>
-    if(this.props.route.params.device.class == 'bulb' || this.props.route.params.device.class == 'bloom') device = <MeshbluHue device={this.props.route.params.device}/>
+    var device = <DeviceNotFound device={this.props.navigation.state.params.device}/>
+    if(this.props.navigation.state.params.device.class == 'bulb' || this.props.navigation.state.params.device.class == 'bloom') device = <MeshbluHue device={this.props.navigation.state.params.device}/>
     return (
       <StyledView>
         {device}

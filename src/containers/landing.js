@@ -1,4 +1,3 @@
-import { withNavigation } from '@expo/ex-navigation';
 import React from 'react'
 import { Button, Text, View } from 'react-native'
 import styled from 'styled-components/native'
@@ -20,10 +19,9 @@ const Margin = styled.View`
   margin: 0 50 0 50;
 `
 
-@withNavigation
 class Landing extends React.Component {
   nextPage = () => {
-    this.props.navigator.push('camera')
+    this.props.navigation.navigate('camera')
   }
 
   render() {

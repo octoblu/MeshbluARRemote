@@ -1,4 +1,3 @@
-import { withNavigation } from '@expo/ex-navigation'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Button, Text, View } from 'react-native'
@@ -32,10 +31,9 @@ const propTypes = {
   device: PropTypes.object.isRequired
 }
 
-@withNavigation
 class DeviceNotFound extends React.Component {
   goBack = () => {
-    this.props.navigator.push('camera')
+    this.props.navigation.navigate('camera')
   }
 
   render() {

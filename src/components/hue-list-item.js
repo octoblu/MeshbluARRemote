@@ -1,4 +1,3 @@
-import { withNavigation } from '@expo/ex-navigation'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Button, View } from 'react-native'
@@ -13,10 +12,9 @@ const propTypes = {
   uuid: PropTypes.string.isRequired
 }
 
-@withNavigation
 class HueListItem extends React.Component {
   controlHue = () => {
-    this.props.navigator.push('hue', { name: this.props.name, uuid: this.props.uuid })
+    this.props.navigation.navigate('hue', { name: this.props.name, uuid: this.props.uuid })
   }
 
   render() {

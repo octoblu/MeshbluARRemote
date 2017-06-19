@@ -50,7 +50,7 @@ class Hue extends React.Component {
   sendMessage = () => {
     var value = this.refs.form.getValue()
     if (value) {
-      var url = 'https://meshblu.octoblu.com/v2/devices/' + this.props.route.params.uuid
+      var url = 'https://meshblu.octoblu.com/v2/devices/' + this.props.navigation.state.params.uuid
       var options = {
         method: 'PUT',
         headers: {
@@ -72,7 +72,7 @@ class Hue extends React.Component {
   }
 
   toCamera = () => {
-    this.props.navigator.push('camera')
+    this.props.navigation.navigate('camera')
   }
 
   render() {
@@ -80,7 +80,7 @@ class Hue extends React.Component {
       <StyledView>
 
         <StyledText>
-          Controlling {this.props.route.params.name} ({this.props.route.params.uuid})
+          Controlling {this.props.navigation.state.params.name} ({this.props.navigation.state.params.uuid})
         </StyledText>
 
         <CenterView>

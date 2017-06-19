@@ -1,4 +1,3 @@
-import { withNavigation } from '@expo/ex-navigation'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -37,7 +36,6 @@ const propTypes = {
   device: PropTypes.object.isRequired
 }
 
-@withNavigation
 class MeshbluHue extends React.Component {
   state = {
     devices: null
@@ -63,7 +61,7 @@ class MeshbluHue extends React.Component {
   }
 
   goBack = () => {
-    this.props.navigator.push('camera')
+    this.props.navigation.navigate('camera')
   }
 
   render() {
